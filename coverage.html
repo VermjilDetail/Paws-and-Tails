@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Coverage | Paws & Tails Insurance Services</title>
+    <meta name="description" content="Detailed coverage information for pet insurance from Lemonade, ASPCA, and Spot Pet Insurance. Learn what's covered.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #FF6B4A;
+            --color-primary-dark: #E85A39;
+            --color-secondary: #4ECDC4;
+            --color-navy: #1A2B4A;
+            --color-text: #3D4E6B;
+            --color-text-light: #6B7A99;
+            --color-bg: #FFFFFF;
+            --color-bg-soft: #F8F9FB;
+            --color-bg-warm: #FFF5F2;
+            --color-border: #E8ECF4;
+            --color-success: #27AE60;
+            --radius-card: 16px;
+            --radius-btn: 50px;
+            --shadow-card: 0 4px 24px rgba(26,43,74,0.08);
+            --shadow-card-hover: 0 8px 40px rgba(26,43,74,0.14);
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background: var(--color-bg);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--color-navy);
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--color-navy);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 20px rgba(26,43,74,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--color-navy);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--radius-btn);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,107,74,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-navy);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(180deg, var(--color-bg-warm) 0%, white 100%);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-navy);
+        }
+
+        .hero-text .subheadline {
+            font-size: 1.25rem;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        /* Detailed Coverage Grid */
+        .detailed-coverage {
+            margin-top: 4rem;
+        }
+
+        .coverage-section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .coverage-section:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .coverage-header {
+            padding: 2rem;
+            background: var(--color-bg-soft);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .coverage-icon-lg {
+            font-size: 3rem;
+        }
+
+        .coverage-title-lg {
+            font-size: 1.5rem;
+            color: var(--color-navy);
+        }
+
+        .coverage-body {
+            padding: 2rem;
+        }
+
+        .coverage-description {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .coverage-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .coverage-point {
+            padding: 1rem;
+            background: var(--color-bg-soft);
+            border-radius: 8px;
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .coverage-point h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-navy);
+        }
+
+        .coverage-point p {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem;
+            background: var(--color-bg-warm);
+            border-radius: var(--radius-card);
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-navy);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-decoration: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .coverage-points {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M7,7C8.1,7 9,7.9 9,9C9,10.1 8.1,11 7,11C5.9,11 5,10.1 5,9C5,7.9 5.9,7 7,7M17,7C18.1,7 19,7.9 19,9C19,10.1 18.1,11 17,11C15.9,11 15,10.1 15,9C15,7.9 15.9,7 17,7M12,8C13.1,8 14,8.9 14,10C14,11.1 13.1,12 12,12C10.9,12 10,11.1 10,10C10,8.9 10.9,8 12,8M4,13C5.1,13 6,13.9 6,15C6,16.1 5.1,17 4,17C2.9,17 2,16.1 2,15C2,13.9 2.9,13 4,13M20,13C21.1,13 22,13.9 22,15C22,16.1 21.1,17 20,17C18.9,17 18,16.1 18,15C18,13.9 18.9,13 20,13M8,18C9.1,18 10,18.9 10,20C10,21.1 9.1,22 8,22C6.9,22 6,21.1 6,20C6,18.9 6.9,18 8,18M16,18C17.1,18 18,18.9 18,20C18,21.1 17.1,22 16,22C14.9,22 14,21.1 14,20C14,18.9 14.9,18 16,18Z"/>
+                </svg>
+                Paws & Tails Insurance
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="coverage.html" style="color: var(--color-primary); font-weight: 600;">Coverage</a></li>
+                <li><a href="index.html#carriers">Our Carriers</a></li>
+                <li><a href="quote.html">Get a Quote</a></li>
+                <li><a href="index.html#about">About Us</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Comprehensive Coverage Details</h1>
+                    <p class="subheadline">Understanding what's covered helps you make the right choice for your furry family member.</p>
+                    <div class="hero-buttons">
+                        <a href="quote.html" class="btn btn-primary">Get a Free Quote</a>
+                        <a href="index.html#carriers" class="btn btn-outline">View Our Carriers</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Coverage Sections -->
+    <section class="section" style="background: var(--color-bg-soft);">
+        <div class="container">
+            <h2 class="section-heading">What's Covered in Detail</h2>
+            <p class="section-subtitle">All three of our carrier partners (Lemonade, ASPCA, and Spot) offer comprehensive coverage with these core protections:</p>
+            
+            <div class="detailed-coverage">
+                <!-- Accidents & Injuries -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🤕</span>
+                        <h3 class="coverage-title-lg">Accidents & Injuries</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Coverage for unexpected accidents and injuries that require veterinary treatment.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Broken Bones & Fractures</h4>
+                                <p>Coverage for fractures from falls, accidents, or trauma requiring casting, surgery, or splinting.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Lacerations & Wounds</h4>
+                                <p>Treatment for cuts, punctures, and wounds including stitches, antibiotics, and follow-up care.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Foreign Object Ingestion</h4>
+                                <p>Coverage for pets who swallow toys, bones, or other objects requiring endoscopic removal or surgery.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Poisoning & Toxins</h4>
+                                <p>Emergency treatment for ingestion of toxic substances including induced vomiting, antidotes, and hospitalization.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Burns & Trauma</h4>
+                                <p>Treatment for thermal, chemical, or electrical burns and other traumatic injuries.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Dental Injuries</h4>
+                                <p>Accidental damage to teeth or mouth from trauma, not related to dental disease.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Illnesses & Infections -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🦠</span>
+                        <h3 class="coverage-title-lg">Illnesses & Infections</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Coverage for a wide range of illnesses and infections that affect your pet's health.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Skin Conditions</h4>
+                                <p>Treatment for dermatitis, hot spots, allergic skin reactions, and bacterial/fungal infections.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Ear & Eye Infections</h4>
+                                <p>Coverage for otitis, conjunctivitis, and other infections requiring medication and treatment.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Urinary Tract Infections (UTIs)</h4>
+                                <p>Diagnosis and treatment of bladder and urinary tract infections including testing and antibiotics.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Respiratory Infections</h4>
+                                <p>Coverage for kennel cough, pneumonia, and other respiratory illnesses.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Gastrointestinal Issues</h4>
+                                <p>Treatment for vomiting, diarrhea, pancreatitis, and other digestive system illnesses.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Parasitic Infections</h4>
+                                <p>Coverage for serious parasitic infections like heartworm disease, giardia, and tick-borne illnesses.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diagnostics & Lab Tests -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🔬</span>
+                        <h3 class="coverage-title-lg">Diagnostics & Lab Tests</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Essential diagnostic testing to accurately diagnose your pet's condition.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Blood Panels & Chemistry</h4>
+                                <p>Complete blood count (CBC), chemistry panels, and specialized blood tests to assess organ function.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Urinalysis</h4>
+                                <p>Laboratory analysis of urine to detect infections, kidney issues, and other health problems.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Imaging: X-Rays & Ultrasounds</h4>
+                                <p>Diagnostic imaging including radiographs and ultrasounds to visualize internal structures.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Advanced Imaging</h4>
+                                <p>Coverage for MRIs, CT scans, and other advanced imaging when medically necessary.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Cytology & Biopsies</h4>
+                                <p>Cell analysis and tissue sampling for cancer diagnosis and other conditions.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Fecal Exams & Parasite Testing</h4>
+                                <p>Testing for intestinal parasites, bacterial infections, and other GI issues.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surgery & Hospitalization -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🏥</span>
+                        <h3 class="coverage-title-lg">Surgery & Hospitalization</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Coverage for surgical procedures and hospital stays when your pet needs intensive care.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Emergency Surgery</h4>
+                                <p>Life-saving surgical procedures for acute conditions like bloat, intestinal obstruction, or trauma.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Planned Elective Surgery</h4>
+                                <p>Coverage for necessary surgeries like ACL repair, tumor removal, and orthopedic procedures.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Overnight Hospitalization</h4>
+                                <p>Costs for ICU care, monitoring, and nursing care during hospital stays.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Post-Operative Care</h4>
+                                <p>Follow-up visits, wound care, medication, and rehabilitation after surgery.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Anesthesia & Monitoring</h4>
+                                <p>Costs for anesthesia administration and vital sign monitoring during procedures.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Specialist surgeries</h4>
+                                <p>Coverage for procedures performed by veterinary specialists (orthopedic, neurologist, etc.).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prescription Medications -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">💊</span>
+                        <h3 class="coverage-title-lg">Prescription Medications</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Coverage for prescription medications prescribed by your veterinarian.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Antibiotics</h4>
+                                <p>Full coverage for prescribed antibiotic medications to treat bacterial infections.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Pain Management</h4>
+                                <p>Prescription pain medications including NSAIDs, opioids, and other analgesics.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Anti-Inflammatories</h4>
+                                <p>Steroidal and non-steroidal anti-inflammatory drugs for inflammation and swelling.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Chronic Disease Meds</h4>
+                                <p>Long-term medications for conditions like diabetes, hypothyroidism, and heart disease.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Behavioral Medications</h4>
+                                <p>Prescription drugs for anxiety, aggression, or compulsive behaviors (varies by carrier).</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Specialty Drugs</h4>
+                                <p>Coverage for expensive specialty medications including chemotherapy drugs and biologics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hereditary & Congenital -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🧬</span>
+                        <h3 class="coverage-title-lg">Hereditary & Congenital Conditions</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Coverage for breed-specific and genetic conditions that may appear later in life.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Hip Dysplasia</h4>
+                                <p>Diagnosis, treatment, and surgery for hip dysplasia common in large breed dogs.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Heart Conditions</h4>
+                                <p>Coverage for congenital heart defects and hereditary heart diseases like murmurs and valve issues.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Eye Disorders</h4>
+                                <p>Treatment for progressive retinal atrophy, cataracts, and other hereditary eye conditions.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Patellar Luxation</h4>
+                                <p>Surgical and medical treatment for dislocated kneecaps common in small breeds.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Hernias</h4>
+                                <p>Coverage for umbilical, inguinal, and diaphragmatic hernias present at birth.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4> Breed-Specific Conditions</h4>
+                                <p>Coverage for conditions common in specific breeds (e.g., German Shepherds, Bulldogs, Persians).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dental Illness -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🦷</span>
+                        <h3 class="coverage-title-lg">Dental Illness</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Coverage for dental diseases and conditions that affect oral health.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Tooth Extractions</h4>
+                                <p>Coverage for extracting broken, infected, or diseased teeth under anesthesia.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Gingivitis & Periodontal Disease</h4>
+                                <p>Treatment for gum disease including deep cleaning, antibiotics, and surgical intervention.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Oral Infections & Abscesses</h4>
+                                <p>Coverage for bacterial infections, tooth abscesses, and related treatments.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Mouth Tumors & Growths</h4>
+                                <p>Diagnosis and removal of oral masses, cysts, and tumors (benign or malignant).</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Jaw & Facial Bone Issues</h4>
+                                <p>Coverage for fractures, infections, or abnormalities of the jaw and facial bones.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Stomatitis</h4>
+                                <p>Severe inflammation of the mouth and gums requiring extensive treatment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cancer Treatment -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🎗️</span>
+                        <h3 class="coverage-title-lg">Cancer Treatment</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Comprehensive coverage for cancer diagnosis and treatment.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Chemotherapy</h4>
+                                <p>Multiple chemotherapy sessions, anti-nausea medications, and supportive care during treatment.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Radiation Therapy</h4>
+                                <p>Coverage for radiation treatment sessions including planning and delivery.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Cancer Surgery</h4>
+                                <p>Major surgical procedures to remove tumors, including complex reconstructive surgery.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Diagnostic Testing</h4>
+                                <p>Biopsies, imaging (CT/MRI), blood work, and staging tests for cancer diagnosis.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Hospitalization & ICU</h4>
+                                <p>Extended hospital stays for intensive care during cancer treatment.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Palliative Care</h4>
+                                <p>Pain management and quality-of-life care for pets with terminal cancer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emergency & Specialty Care -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🚑</span>
+                        <h3 class="coverage-title-lg">Emergency & Specialty Care</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Coverage for emergency visits and specialist veterinary care.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>24/7 Emergency Care</h4>
+                                <p>After-hours emergency clinic visits, triage, and emergency treatments.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Specialist Referrals</h4>
+                                <p>Visits to veterinary specialists including neurologists, cardiologists, oncologists, etc.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Rehabilitation Therapy</h4>
+                                <p>Physical therapy, hydrotherapy, acupuncture, and rehabilitation for recovery.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Critical Care</h4>
+                                <p>Intensive care unit (ICU) monitoring and treatment for life-threatening conditions.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Oxygen Therapy</h4>
+                                <p>Emergency oxygen administration and respiratory support.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Blood Transfusions</h4>
+                                <p>Emergency blood transfusions and related laboratory testing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chronic Conditions -->
+                <div class="coverage-section">
+                    <div class="coverage-header">
+                        <span class="coverage-icon-lg">🌡️</span>
+                        <h3 class="coverage-title-lg">Chronic Conditions</h3>
+                    </div>
+                    <div class="coverage-body">
+                        <p class="coverage-description">Ongoing coverage for chronic illnesses that require long-term management.</p>
+                        <div class="coverage-points">
+                            <div class="coverage-point">
+                                <h4>Diabetes Management</h4>
+                                <p>Insulin, glucose monitors, syringes, and regular check-ups for diabetic pets.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Arthritis & Joint Disease</h4>
+                                <p>Pain management, joint supplements, anti-inflammatories, and physical therapy.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Allergies</h4>
+                                <p>Diagnosis, treatment, and management of environmental and food allergies.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Hypothyroidism</h4>
+                                <p>Hormone replacement therapy and regular blood monitoring for thyroid conditions.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Epilepsy & Seizures</h4>
+                                <p>Anti-seizure medications, emergency treatment for breakthrough seizures, and monitoring.</p>
+                            </div>
+                            <div class="coverage-point">
+                                <h4>Kidney Disease</h4>
+                                <p>Medication, special diets, and regular monitoring for chronic kidney disease.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Ready to Protect Your Pet?</h2>
+                <p style="font-size: 1.125rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Now that you understand what's covered, get a personalized quote from our top carriers in just 2 minutes.
+                </p>
+                <a href="quote.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 40px;">Get My Free Quote Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="index.html" class="footer-logo">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 32px; height: 32px;">
+                            <path d="M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M7,7C8.1,7 9,7.9 9,9C9,10.1 8.1,11 7,11C5.9,11 5,10.1 5,9C5,7.9 5.9,7 7,7M17,7C18.1,7 19,7.9 19,9C19,10.1 18.1,11 17,11C15.9,11 15,10.1 15,9C15,7.9 15.9,7 17,7M12,8C13.1,8 14,8.9 14,10C14,11.1 13.1,12 12,12C10.9,12 10,11.1 10,10C10,8.9 10.9,8 12,8M4,13C5.1,13 6,13.9 6,15C6,16.1 5.1,17 4,17C2.9,17 2,16.1 2,15C2,13.9 2.9,13 4,13M20,13C21.1,13 22,13.9 22,15C22,16.1 21.1,17 20,17C18.9,17 18,16.1 18,15C18,13.9 18.9,13 20,13M8,18C9.1,18 10,18.9 10,20C10,21.1 9.1,22 8,22C6.9,22 6,21.1 6,20C6,18.9 6.9,18 8,18M16,18C17.1,18 18,18.9 18,20C18,21.1 17.1,22 16,22C14.9,22 14,21.1 14,20C14,18.9 14.9,18 16,18Z"/>
+                        </svg>
+                        Paws & Tails Insurance
+                    </a>
+                    <p style="color: rgba(255,255,255,0.8); margin-top: 1rem;">
+                        Protecting Every Paw, Every Tail, Every Day.<br>
+                        Licensed California Insurance Agency
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">📷</a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="coverage.html">Coverage</a></li>
+                        <li><a href="index.html#carriers">Our Carriers</a></li>
+                        <li><a href="quote.html">Get a Quote</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Our Carriers</h4>
+                    <ul>
+                        <li><a href="https://www.lemonade.com/" target="_blank" rel="noopener noreferrer">Lemonade</a></li>
+                        <li><a href="https://www.aspcapetinsurance.com/" target="_blank" rel="noopener noreferrer">ASPCA</a></li>
+                        <li><a href="https://spotpet.com/" target="_blank" rel="noopener noreferrer">Spot</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Paws & Tails Insurance Services is a licensed insurance agency in the state of California. We are not affiliated with or employed by any insurance carrier. Coverage details, pricing, and availability vary by carrier, plan, state, and individual pet. Please review all policy documents carefully before purchasing.</p>
+                <p style="margin-top: 1rem;">© 2025 Paws & Tails Insurance Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.textContent = '☰';
+            });
+        });
+
+        // Sticky Navbar with Shadow
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
